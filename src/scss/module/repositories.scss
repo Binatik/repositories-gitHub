@@ -9,5 +9,8 @@
 }
 
 .repositories__autocomplited {
-  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 15px;
 }

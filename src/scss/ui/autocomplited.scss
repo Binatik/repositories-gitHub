@@ -1,19 +1,43 @@
 .autocomplited {
-  &__input--mode--primary {
+  &__search--mode--primary {
     width: auto;
     background-color: $default-color;
-    border-radius: 18px;
+    border-radius: 6px;
     border: none;
     outline: none;
   }
 
-  &__input--size--md {
+  &__search--size--md {
     font-size: 1.4rem;
     padding: 5px 10px;
   }
 
-  &__input--wide {
+  &__search--wide {
     width: 100%;
     box-sizing: border-box;
+  }
+
+  &__window {
+    padding: 5px 10px;
+    background-color: $warning-color;
+    border-radius: 6px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__button {
+    cursor: pointer;
+    padding: 5px;
+    background-color: $default-color;
+    border-radius: 6px;
+    border: none;
+  }
+
+  &__button--wide {
+    text-align: start;
+    width: 100%;
   }
 }
