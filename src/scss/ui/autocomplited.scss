@@ -1,0 +1,19 @@
+.autocomplited {
+  &__input--mode--primary {
+    width: auto;
+    background-color: $default-color;
+    border-radius: 18px;
+    border: none;
+    outline: none;
+  }
+
+  &__input--size--md {
+    font-size: 1.4rem;
+    padding: 5px 10px;
+  }
+
+  &__input--wide {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
