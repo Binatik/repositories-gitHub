@@ -8,9 +8,18 @@
   flex: 0 1 800px;
 }
 
-.repositories__autocomplited {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding-top: 15px;
+.repositories {
+  &__autocomplited {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 15px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
+
