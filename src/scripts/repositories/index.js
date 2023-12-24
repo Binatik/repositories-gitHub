@@ -67,6 +67,13 @@ function repositories() {
 
     renderList()
   });
+
+  todo.addEventListener("click", (event) => {
+    const id = event.target.dataset.id;
+
+    filterSearchState = filterSearchState.filter((item) => item.id !== +id)
+    autocomplited(getTodoTemplate, todo, filterSearchState);
+  })
 }
 
 export { repositories };

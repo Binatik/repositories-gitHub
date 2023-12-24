@@ -12,7 +12,7 @@ function getTodoTemplate(element) {
   <p>Имя репозитория ${element.name}</p>
   <p>Владелец ${element.owner.login}</p>
   <p>Рейтинг ${element.stargazers_count}</p>
-  <button type="button">Удалить репозиторий</button>
+  <button data-id=${element.id} type="button">Удалить репозиторий</button>
   </div>`;
 }
 
