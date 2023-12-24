@@ -1,24 +1,26 @@
 import { autocomplited } from "./renders";
-import { getAutocomplitedTemplate, getWindowTemplate } from "./templetes";
+import { getAutocomplitedTemplate, getTodoTemplate } from "./templetes";
 import { debounce } from "../helpers";
 
 function repositories() {
   const search = document.querySelector(".autocomplited__search");
-  const autocomplitedWindow = document.querySelector(".window");
-  const repositoriesList = document.querySelector(".repositories__list");
+  const autocomplitedList = document.querySelector(".autocomplited__list");
+  const todo = document.querySelector(".todo");
 
   let searchState = [];
   let filterSearchState = [];
 
-  function renderWindow() {
+  function renderList() {
     if (searchState.items.length === 0) {
-      autocomplitedWindow.classList.remove("autocomplited__window");
-      autocomplited(getAutocomplitedTemplate, autocomplitedWindow, searchState.items);
+      autocomplitedList.classList.remove("autocomplited__list--on");
+      autocomplitedList.classList.add("autocomplited__list--off");
+      autocomplited(getAutocomplitedTemplate, autocomplitedList, searchState.items);
       return;
     }
 
-    autocomplitedWindow.classList.add("autocomplited__window");
-    autocomplited(getAutocomplitedTemplate, autocomplitedWindow, searchState.items);
+    autocomplitedList.classList.add("autocomplited__list--on");
+    autocomplitedList.classList.remove("autocomplited__list--off");
+    autocomplited(getAutocomplitedTemplate, autocomplitedList, searchState.items);
   }
 
   search.addEventListener(
@@ -49,21 +51,21 @@ function repositories() {
         searchState.items = [];
       }
 
-      renderWindow();
+      renderList()
     }, 250)
   );
 
-  autocomplitedWindow.addEventListener("click", (event) => {
+  autocomplitedList.addEventListener("click", (event) => {
     const id = event.target.dataset.id;
     filterSearchState = filterSearchState.concat(searchState.items.filter((item) => item.id === +id));
 
-    autocomplited(getWindowTemplate, repositoriesList, filterSearchState);
-    autocomplited(getAutocomplitedTemplate, autocomplitedWindow, searchState.items);
+    autocomplited(getTodoTemplate, todo, filterSearchState);
+    autocomplited(getAutocomplitedTemplate, autocomplitedList, searchState.items);
 
     search.value = "";
     searchState.items = [];
 
-    renderWindow();
+    renderList()
   });
 }
 

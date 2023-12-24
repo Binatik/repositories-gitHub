@@ -7,12 +7,13 @@ function getAutocomplitedTemplate(element) {
   ${element.name}</button>`;
 }
 
-function getWindowTemplate(element) {
-  return `<div class="list__item">
-  <p>Имя репозитория ${element.name}</>
-  <p>Владелец ${element.owner.login}</>
-  <p>Рейтинг ${element.stargazers_count}</>
+function getTodoTemplate(element) {
+  return `<div class="todo__item">
+  <p>Имя репозитория ${element.name}</p>
+  <p>Владелец ${element.owner.login}</p>
+  <p>Рейтинг ${element.stargazers_count}</p>
+  <button type="button">Удалить репозиторий</button>
   </div>`;
 }
 
-export { getAutocomplitedTemplate, getWindowTemplate };
+export { getAutocomplitedTemplate, getTodoTemplate };

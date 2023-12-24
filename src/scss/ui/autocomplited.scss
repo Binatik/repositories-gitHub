@@ -1,23 +1,9 @@
 .autocomplited {
-  &__search--mode--primary {
-    width: auto;
-    background-color: $default-color;
-    border-radius: 6px;
-    border: none;
-    outline: none;
+  &__list {
+    margin-top: 10px;
   }
 
-  &__search--size--md {
-    font-size: 1.4rem;
-    padding: 5px 10px;
-  }
-
-  &__search--wide {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  &__window {
+  &__list--on {
     padding: 5px 10px;
     background-color: $warning-color;
     border-radius: 6px;
@@ -39,5 +25,23 @@
   &__button--wide {
     text-align: start;
     width: 100%;
+  }
+
+  &__search--mode--primary {
+    width: auto;
+    background-color: $default-color;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+  }
+
+  &__search--size--md {
+    font-size: 1.4rem;
+    padding: 5px 10px;
+  }
+
+  &__search--wide {
+    width: 100%;
+    box-sizing: border-box;
   }
 }

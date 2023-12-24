@@ -1,12 +1,14 @@
 body {
   font-family: $mainFont;
+  background-color: $fon-color;
 }
 
-.container {
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.app {
+  padding: 15px;
+}
+
+button {
+  cursor: pointer;
 }
 
 p {

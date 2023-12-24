@@ -4,9 +4,10 @@
 @import "./utils/global.scss";
 
 //ui
+@import "./ui/paper.scss";
 @import "./ui/title.scss";
 @import "./ui/autocomplited.scss";
-@import "./ui/list.scss";
+@import "./ui/todo.scss";
 
 //module
-@import "./module/repositories.scss";
+@import "./module/repositorie.scss";
