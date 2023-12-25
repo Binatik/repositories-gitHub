@@ -49,13 +49,11 @@ function repositories() {
   var filterSearchState = [];
   function renderList() {
     if (searchState.items.length === 0) {
-      autocomplitedList.classList.remove("autocomplited__list--on");
-      autocomplitedList.classList.add("autocomplited__list--off");
+      autocomplitedList.classList.add("autocomplited__list--hidden");
       autocomplited(getAutocomplitedTemplate, autocomplitedList, searchState.items);
       return;
     }
-    autocomplitedList.classList.add("autocomplited__list--on");
-    autocomplitedList.classList.remove("autocomplited__list--off");
+    autocomplitedList.classList.remove("autocomplited__list--hidden");
     autocomplited(getAutocomplitedTemplate, autocomplitedList, searchState.items);
   }
   search.addEventListener("input", debounce( /*#__PURE__*/function () {
@@ -65,7 +63,7 @@ function repositories() {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
             value = event.target.value;
-            if (!(value !== "")) {
+            if (!(value.trim() !== '')) {
               _context2.next = 8;
               break;
             }
@@ -121,12 +119,15 @@ function repositories() {
     return function (_x) {
       return _ref.apply(this, arguments);
     };
-  }(), 250));
+  }(), 400));
   autocomplitedList.addEventListener("click", function (event) {
     var id = event.target.dataset.id;
     filterSearchState = filterSearchState.concat(searchState.items.filter(function (item) {
       return item.id === +id;
     }));
+    if (!id) {
+      return;
+    }
     autocomplited(getTodoTemplate, todo, filterSearchState);
     autocomplited(getAutocomplitedTemplate, autocomplitedList, searchState.items);
     search.value = "";
