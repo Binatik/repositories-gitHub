@@ -1,9 +1,6 @@
 .autocomplited {
   &__list {
     margin-top: 10px;
-  }
-
-  &__list--on {
     padding: 5px 10px;
     background-color: $warning-color;
     border-radius: 6px;
@@ -12,6 +9,10 @@
     justify-content: flex-start;
     flex-direction: column;
     gap: 10px;
+  }
+
+  &__list--hidden {
+    display: none;
   }
 
   &__button {

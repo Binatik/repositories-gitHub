@@ -12,14 +12,12 @@ function repositories() {
 
   function renderList() {
     if (searchState.items.length === 0) {
-      autocomplitedList.classList.remove("autocomplited__list--on");
-      autocomplitedList.classList.add("autocomplited__list--off");
+      autocomplitedList.classList.add("autocomplited__list--hidden");
       autocomplited(getAutocomplitedTemplate, autocomplitedList, searchState.items);
       return;
     }
 
-    autocomplitedList.classList.add("autocomplited__list--on");
-    autocomplitedList.classList.remove("autocomplited__list--off");
+    autocomplitedList.classList.remove("autocomplited__list--hidden");
     autocomplited(getAutocomplitedTemplate, autocomplitedList, searchState.items);
   }
 
@@ -28,7 +26,7 @@ function repositories() {
     debounce(async (event) => {
       const value = event.target.value;
 
-      if (value !== "") {
+      if (value.trim() !== '') {
         const request = `https://api.github.com/search/repositories?q=${value}&per_page=5`;
 
         async function getSearchData() {
@@ -51,13 +49,17 @@ function repositories() {
         searchState.items = [];
       }
 
-      renderList()
-    }, 250)
+      renderList();
+    }, 400)
   );
 
   autocomplitedList.addEventListener("click", (event) => {
     const id = event.target.dataset.id;
     filterSearchState = filterSearchState.concat(searchState.items.filter((item) => item.id === +id));
+
+    if (!id) {
+      return;
+    }
 
     autocomplited(getTodoTemplate, todo, filterSearchState);
     autocomplited(getAutocomplitedTemplate, autocomplitedList, searchState.items);
@@ -65,15 +67,15 @@ function repositories() {
     search.value = "";
     searchState.items = [];
 
-    renderList()
+    renderList();
   });
 
   todo.addEventListener("click", (event) => {
     const id = event.target.dataset.id;
 
-    filterSearchState = filterSearchState.filter((item) => item.id !== +id)
+    filterSearchState = filterSearchState.filter((item) => item.id !== +id);
     autocomplited(getTodoTemplate, todo, filterSearchState);
-  })
+  });
 }
 
 export { repositories };
